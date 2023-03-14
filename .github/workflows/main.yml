@@ -11,7 +11,7 @@ jobs:
       - run: echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
       - run: sudo apt update
       - run: sudo apt-get install terraform
-      - run: git clone https://github.com/FajarMaftuhFadli/my-terraform.git
+      - run: git clone https://github.com/FajarMaftuhFadli/my-terraform.git .
       - run: pwd
       - run: cd /home/runner/work/my-terraform/my-terraform
       - run: pwd
