@@ -12,6 +12,7 @@ jobs:
       - run: sudo apt update
       - run: sudo apt-get install terraform
       - run: git clone https://github.com/FajarMaftuhFadli/my-terraform.git
-      - run: cd my-terraform
+      - run: pwd
+      - run: cd ./my-terraform
       - run: terraform init
       - run: ls -la
