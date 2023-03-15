@@ -30,6 +30,8 @@ jobs:
         run: echo "$GOOGLE_APPLICATION_CREDENTIALS" > $GITHUB_ENV
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          
+      - run: echo "$GOOGLE_APPLICATION_CREDENTIALS"
 
       - name: Authenticate with GCP using service account
         run: |
