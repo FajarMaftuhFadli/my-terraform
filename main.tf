@@ -1,7 +1,7 @@
 provider "google" {
-  project     = var.project_id
-  region      = "us-central1"
-  credentials = file("./terraform.json")
+  project = var.project_id
+  region  = "us-central1"
+  # credentials = file("./terraform.json")
 }
 
 terraform {
