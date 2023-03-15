@@ -5,4 +5,5 @@ resource "google_storage_bucket" "bucket_1" {
   }
   location                    = "US"
   uniform_bucket_level_access = true
+  force_destroy               = true
 }
