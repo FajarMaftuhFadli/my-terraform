@@ -12,9 +12,11 @@ jobs:
       - run: sudo apt update
       - run: sudo apt-get install terraform
       - run: git clone https://github.com/FajarMaftuhFadli/my-terraform.git .
-      - run: cd /home/runner/work/my-terraform/my-terraform
-      - run: HUYE='${{ secrets.HUYE }}'
+      - env:
+          HUYE:${{ secrets.HUYE }}
       - run: echo $HUYE
-      - run: gcloud auth application-default login
+        # env:
+        #   GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+      # - run: gcloud auth application-default login
       - run: terraform init
-      - run: terraform plan
+      # - run: terraform plan
