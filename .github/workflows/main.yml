@@ -3,6 +3,9 @@ run-name: ${{ github.actor }} is terraforming
 on: [push]
 jobs:
   plan:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
     runs-on: ubuntu-latest
     steps:
       #- name: Install the terraform dependency packages
@@ -24,20 +27,14 @@ jobs:
       #  run: sudo apt-get install terraform
         
       - uses: actions/checkout@v3
-        
-      #- name: Set environment variable for GCP authentication
-      #  run: echo "$GOOGLE_APPLICATION_CREDENTIALS" > $GITHUB_ENV
-      #  env:
-      #    GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-
-      #- name: Authenticate with GCP using service account
-      #  run: |
-      #    gcloud auth application-default login
-      #    echo "Enter the authorization code from the browser window:"
-      #    read auth_code
-      #    echo $auth_code | gcloud auth application-default print-access-token
+      
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}'
 
       - name: Initialize terraform
         run: terraform init
       
-      #- run: terraform plan
+      - run: terraform plan
