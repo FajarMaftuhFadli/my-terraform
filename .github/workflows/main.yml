@@ -26,15 +26,15 @@ jobs:
       - name: clone this repo
         run: git clone https://github.com/FajarMaftuhFadli/my-terraform.git .
         
-      #- name: Set environment variable for GCP authentication
-      #  run: echo "$GOOGLE_APPLICATION_CREDENTIALS" > $GITHUB_ENV
-      #  env:
-      #    GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+      - name: Set environment variable for GCP authentication
+        run: echo "$GOOGLE_APPLICATION_CREDENTIALS" > $GITHUB_ENV
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
-      #- name: Authenticate with GCP using service account
-      #  run: gcloud auth application-default login
+      - name: Authenticate with GCP using service account
+        run: gcloud auth application-default login
       
       - name: Initialize terraform
-      - run: terraform init
+        run: terraform init
       
       # - run: terraform plan
