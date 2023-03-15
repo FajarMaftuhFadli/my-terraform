@@ -23,7 +23,7 @@ jobs:
       - name: Install Terraform from the new repository
         run: sudo apt-get install terraform
         
-      - name: clone this repo
+      - name: Clone this repo
         run: git clone https://github.com/FajarMaftuhFadli/my-terraform.git .
         
       - name: Set environment variable for GCP authentication
@@ -32,8 +32,12 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
       - name: Authenticate with GCP using service account
-        run: gcloud auth application-default login
-      
+        run: |
+          gcloud auth application-default login
+          echo "Enter the authorization code from the browser window:"
+          read auth_code
+          echo $auth_code | gcloud auth application-default print-access-token
+
       - name: Initialize terraform
         run: terraform init
       
