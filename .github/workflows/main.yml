@@ -30,17 +30,15 @@ jobs:
         run: echo "$GOOGLE_APPLICATION_CREDENTIALS" > $GITHUB_ENV
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-          
-      - run: echo "$GOOGLE_APPLICATION_CREDENTIALS"
 
-      - name: Authenticate with GCP using service account
-        run: |
-          gcloud auth application-default login
-          echo "Enter the authorization code from the browser window:"
-          read auth_code
-          echo $auth_code | gcloud auth application-default print-access-token
+      #- name: Authenticate with GCP using service account
+      #  run: |
+      #    gcloud auth application-default login
+      #    echo "Enter the authorization code from the browser window:"
+      #    read auth_code
+      #    echo $auth_code | gcloud auth application-default print-access-token
 
       - name: Initialize terraform
         run: terraform init
       
-      # - run: terraform plan
+      - run: terraform plan
