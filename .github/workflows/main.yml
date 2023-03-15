@@ -23,13 +23,12 @@ jobs:
       - name: Install Terraform from the new repository
         run: sudo apt-get install terraform
         
-      - name: Clone this repo
-        run: git clone https://github.com/FajarMaftuhFadli/my-terraform.git .
+      - uses: actions/checkout@v3
         
-      - name: Set environment variable for GCP authentication
-        run: echo "$GOOGLE_APPLICATION_CREDENTIALS" > $GITHUB_ENV
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+      #- name: Set environment variable for GCP authentication
+      #  run: echo "$GOOGLE_APPLICATION_CREDENTIALS" > $GITHUB_ENV
+      #  env:
+      #    GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
       #- name: Authenticate with GCP using service account
       #  run: |
@@ -41,4 +40,4 @@ jobs:
       - name: Initialize terraform
         run: terraform init
       
-      - run: terraform plan
+      #- run: terraform plan
