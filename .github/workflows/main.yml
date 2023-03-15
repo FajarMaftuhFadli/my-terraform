@@ -13,5 +13,6 @@ jobs:
       - run: sudo apt-get install terraform
       - run: git clone https://github.com/FajarMaftuhFadli/my-terraform.git .
       - run: cd /home/runner/work/my-terraform/my-terraform
+      - run: gcloud auth application-default login
       - run: terraform init
       - run: terraform plan
